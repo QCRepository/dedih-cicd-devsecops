@@ -47,6 +47,10 @@ jobs:
   # secret-scan:
   #   name: Secret scan (gitleaks)
   #   runs-on: ubuntu-latest
+  #   # Least privilege: csak annyi jog, amennyi szükséges
+  #   permissions:
+  #     contents: read         # a repo kiolvasásához
+  #     pull-requests: write   # hogy a gitleaks kommentelhessen a PR-en
   #   steps:
   #     - name: Repo letöltése (teljes történettel)
   #       uses: actions/checkout@v4
@@ -94,6 +98,10 @@ jobs:
   # ai-review:
   #   name: AI code review (Claude)
   #   runs-on: ubuntu-latest
+  #   # Least privilege: csak annyi jog, amennyi szükséges
+  #   permissions:
+  #     contents: read         # a PR diff kiolvasásához
+  #     pull-requests: write   # hogy a Claude review-kommenteket írhasson
   #   if: github.event_name == 'pull_request'
   #   steps:
   #     - name: Repo letöltése
